@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DeliveryClubTest {
 
-    @Test
+   // @Test
     public void pizzaTest() {
         WebDriver localDriver = DriverPool.instance.pollDriver();
 
@@ -38,7 +38,7 @@ public class DeliveryClubTest {
         DriverPool.instance.releaseDriver(localDriver);
     }
 
-    @Test
+   // @Test
     public void menuTest(){
         WebDriver localDriver = DriverPool.instance.pollDriver();
 

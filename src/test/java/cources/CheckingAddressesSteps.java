@@ -35,8 +35,8 @@ public class CheckingAddressesSteps {
 
 
         for (String address:addressTestPair.keySet()) {
-            page.auth();
             page.searchByAddr(address);
+
             Assert.assertTrue(page.vendorAvailabe(addressTestPair.get(address)));
         }
 

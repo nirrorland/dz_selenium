@@ -175,9 +175,11 @@ public class DeliveryClubMainPageObject extends AbstractPage {
 
     public void searchByAddr(String address){
 
-        fillAddrField(address);
+
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
+            fillAddrField(address);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

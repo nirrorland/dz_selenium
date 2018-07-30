@@ -1,4 +1,6 @@
 cources\pages\AbstractPage.class
+cources\data\User.class
+cources\data\UserPool.class
 cources\data\MenuChoiseTestPair.class
 cources\CheckBoxFoodMenuSteps.class
 cources\ChangeBannerFeatureSteps.class

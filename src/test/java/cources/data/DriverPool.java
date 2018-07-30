@@ -8,7 +8,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class DriverPool {
     private static final String WEBDRIVER_CHROME_DRIVER_KEY = "webdriver.chrome.driver";
-    private static final String WEBDRIVER_CHROME_DRIVER = "C:\\Users\\Irmo\\Downloads\\chromedriver.exe";
+    private static final String WEBDRIVER_CHROME_DRIVER = "C:\\Users\\ostcek\\Downloads\\chromedriver.exe";
 
     private List<WebDriver> drivers =
             new CopyOnWriteArrayList<WebDriver>();
