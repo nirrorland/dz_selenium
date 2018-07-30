@@ -1,4 +1,4 @@
-package cources;
+package cources.trash;
 
 import cources.checkers.MenuMealChecker;
 import cources.checkers.MenuTestPairChecker;

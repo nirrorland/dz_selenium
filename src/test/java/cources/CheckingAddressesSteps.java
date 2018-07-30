@@ -1,7 +1,10 @@
 package cources;
 
+import cources.checkers.AccountChecker;
 import cources.data.AddressTestPair;
 import cources.data.DriverPool;
+import cources.data.User;
+import cources.data.UserPool;
 import cources.pages.DeliveryClubMainPageObject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -40,6 +43,23 @@ public class CheckingAddressesSteps {
             Assert.assertTrue(page.vendorAvailabe(addressTestPair.get(address)));
         }
 
+    }
+
+    @When("^i login$")
+    public void i_login() {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("i login");
+
+
+        User user = UserPool.instance.pollUser();
+        page.auth(user.getLogin(),user.getPassword());
+
+    }
+
+    @Then("^i see my account$")
+    public void i_see_myaccount() {
+        System.out.println("i see my acc");
+        Assert.assertTrue(new AccountChecker(page).check());
     }
 
 }

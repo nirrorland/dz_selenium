@@ -50,6 +50,9 @@ public class DeliveryClubMainPageObject extends AbstractPage {
     @FindBy(xpath = "//div[@class='slick-slide slick-current slick-active']/div[@class='dc-slide']")
     private WebElement activeBanner;
 
+    @FindBy(xpath = "//span[@class='user-profile__title' and text()='Профайл']")
+    private WebElement accountList;
+
     private WebDriverWait waiter;
 
     private EditableTextField searchMealField;
@@ -57,6 +60,10 @@ public class DeliveryClubMainPageObject extends AbstractPage {
 
     private List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
     private List<CheckBox> checkBoxListAll = new ArrayList<CheckBox>();
+
+    public WebElement getAccountList() {
+        return accountList;
+    }
 
     @Override
     public void init(WebDriver webDriver) {
@@ -155,10 +162,14 @@ public class DeliveryClubMainPageObject extends AbstractPage {
         authBtn.click();
 
         EditableTextField loginField =
-                new EditableTextField(driver.findElement(By.className("user-login__input")));
+                new EditableTextField(driver.findElement(By.xpath("//input[@type='text' and @class='user-login__input dynamic-input--def']")));
         loginField.appendText(login);
 
-        //EditableTextField passField = new EditableTextField(driver.findElement(By.))
+        EditableTextField passField = new EditableTextField(driver.findElement(By.xpath("//input[@type='password' and @class='user-login__input dynamic-input--def']")));
+        passField.appendText(password);
+
+        WebElement loginBtn = driver.findElement(By.xpath("//button[@class='user-login__btn--submit btn-green--sm']"));
+        loginBtn.click();
     }
 
     public CheckBox getCheckBoxNyName(String name){

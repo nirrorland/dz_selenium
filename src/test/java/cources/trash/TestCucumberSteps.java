@@ -1,4 +1,4 @@
-package cources;
+package cources.trash;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
