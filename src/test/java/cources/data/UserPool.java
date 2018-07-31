@@ -9,8 +9,8 @@ public class UserPool {
     private List<User> users =  new CopyOnWriteArrayList<User>();
 
     private UserPool() {
-        users.add(new User("login2", "pass2"));
-        users.add(new User("irmo-silindo@yandex.ru", "futurama"));
+        users.add(new User("login2@yandex.ru", "pass2"));
+        users.add(new User("login3@mail.ru", "pass32"));
 
     }
 

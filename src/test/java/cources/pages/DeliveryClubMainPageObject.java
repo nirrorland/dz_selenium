@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -53,6 +54,11 @@ public class DeliveryClubMainPageObject extends AbstractPage {
     @FindBy(xpath = "//span[@class='user-profile__title' and text()='Профайл']")
     private WebElement accountList;
 
+    @FindBys(
+            {@FindBy(xpath = "//section[@class='vendor-item__title']/a[@class='vendor-item__title-link']/span")}
+    )
+    private List<WebElement> shops;
+
     private WebDriverWait waiter;
 
     private EditableTextField searchMealField;
@@ -60,6 +66,36 @@ public class DeliveryClubMainPageObject extends AbstractPage {
 
     private List<CheckBox> checkBoxList = new ArrayList<CheckBox>();
     private List<CheckBox> checkBoxListAll = new ArrayList<CheckBox>();
+
+
+    @FindBys(
+            {@FindBy(xpath = "//form[@method='post']/p/a[@class='button']")}
+    )
+    private List<WebElement> orderButtons;
+
+    @FindBy(xpath = "//a[@class='button alt open_basket from_basket']")
+    private WebElement boxButton;
+
+    public void openBox() {
+        //boxButton.click();
+        waiter.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@class='button alt open_basket from_basket']")));
+        WebElement boxButton2 = driver.findElement(By.xpath("//a[@class='button alt open_basket from_basket']"));
+
+        boxButton2.click();
+    }
+
+
+    public String orderMealsByNumber(int num){
+        WebElement nameElem = orderButtons.get(0).findElement(By.xpath("../../../h3[@class='product_title']/span"));
+        String name = nameElem.getText();
+        System.out.println(name);
+
+        orderButtons.get(num-1).click();
+        return name;
+    }
+
+
+
 
     public WebElement getAccountList() {
         return accountList;
@@ -72,6 +108,13 @@ public class DeliveryClubMainPageObject extends AbstractPage {
 
         waiter = new WebDriverWait(driver, 20);
         PageFactory.initElements(webDriver, this);
+    }
+
+    public String openShopByNumber(int num) {
+        System.out.println(shops.size());
+        String name = shops.get(num-1).getText();
+        shops.get(num-1).click();
+        return name;
     }
 
     public boolean vendorAvailabe(String vendorName) {
